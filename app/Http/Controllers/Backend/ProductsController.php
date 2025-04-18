@@ -45,7 +45,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'price_sale' => 'nullable',
             'productcategory_id' => 'required|exists:productcategory,id', 
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|max:2048',
             'quantity' => 'required',
         ]);
         $products = new Products;
@@ -84,7 +84,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'price_sale' => 'nullable',
             'productcategory_id' => 'required|exists:productcategory,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|max:2048',
             'quantity' => 'required',
         ]);
         $products = Products::find($id);

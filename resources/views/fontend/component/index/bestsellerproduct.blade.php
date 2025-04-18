@@ -19,7 +19,7 @@
                     </div>
                     <!-- Nội dung sản phẩm -->
                     <div class="card-body">
-                        <h4 class="card-product__title"><a href="">{{ $products->name }}</a></h4>
+                        <h4 class="card-product__title"><a href="{{ route('productdetail.index', ['id' => $products->id]) }}">{{ $products->name }}</a></h4>
                         <p class="card-product__price">${{ number_format($products->price, 2) }}</p>
                     </div>
                 </div>

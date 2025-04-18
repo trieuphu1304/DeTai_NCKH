@@ -1,7 +1,6 @@
 <html>
+<link rel="stylesheet" href="{{ asset('public/fontend/css/category.css')}}">
   <body>
-    
-	<!-- ================ end banner area ================= -->
 
 
 	<!-- ================ category section start ================= -->		  

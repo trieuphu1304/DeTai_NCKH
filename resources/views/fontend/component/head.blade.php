@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ asset('public/fontend/vendors/fontawesome/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('public/fontend/vendors/themify-icons/themify-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('public/fontend/vendors/nice-select/nice-select.css') }}">
-  <link rel="stylesheet" href="{{ asset('public/vendors/linericon/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/fontend//vendors/linericon/style.css') }}">
   <link rel="stylesheet" href="{{ asset('public/fontend/vendors/owl-carousel/owl.theme.default.min.css') }}"> 
   <link rel="stylesheet" href="{{ asset('public/fontend/vendors/owl-carousel/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/linearicons/2.0.0/style.min.css">

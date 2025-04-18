@@ -1,0 +1,27 @@
+.col-md-6, .col-lg-4 {
+    margin-bottom: 30px; /* Thêm một chút khoảng trắng dọc */
+}
+
+.card-product {
+    display: flex;
+    flex-direction: column; /* Sắp xếp nội dung bên trong thẻ theo chiều dọc */
+    align-items: stretch; /* Làm cho các mục kéo dài cùng chiều rộng */
+}
+
+.card-product__img {
+    /* Đảm bảo hình ảnh không gây ra chiều cao quá lớn */
+    max-height: 250px; /* Ví dụ: Giới hạn chiều cao hình ảnh */
+    overflow: hidden;
+}
+
+.card-body {
+    /* Đảm bảo phần thân chiếm không gian cần thiết mà không bị chồng lấp */
+    padding-bottom: 15px;
+}
+.card-product__img img {
+    max-width: 100%; /* Đảm bảo chiều rộng không vượt quá phần tử cha */
+    max-height: 250px; /* Giữ chiều cao tối đa như bạn đã thiết lập */
+    height: auto; /* Duy trì tỷ lệ khung hình */
+    display: block; /* Loại bỏ khoảng trắng thừa dưới hình ảnh */
+    margin: 0 auto; /* Căn giữa hình ảnh trong vùng chứa nếu cần */
+}
