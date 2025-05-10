@@ -42,7 +42,7 @@
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
-						<a class="button primary-btn" href="#">Thêm vào giỏ hàng</a>
+						<a class="button primary-btn add-to-cart-btn" href="javascript:void(0)" data-product-id="{{ $products->id }}">Thêm vào giỏ hàng</a>
                         <div class="card_area d-flex align-items-center">
                             <a class="icon_btn" href="javascript:void(0)"><i class="fas fa-gem"></i></a>
                             <a class="icon_btn" href="javascript:void(0)"><i class="fas fa-heart"></i></a>
@@ -219,5 +219,33 @@
 			</div>
 		</div>
 	</section>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+    $('.add-to-cart-btn').click(function() {
+        var productId = $(this).data('product-id');
+        var quantity = parseInt($('#sst').val());
+
+        $.ajax({
+            url: "{{ route('cart.add') }}",
+            method: 'POST',
+            data: {
+                _token: "{{ csrf_token() }}",
+                products_id: productId,
+                quantity: quantity
+            },
+            success: function(response) {
+                $('#cart-count').text(response.cartCount);
+                alert('Đã thêm sản phẩm vào giỏ!');
+            },
+            error: function(xhr) {
+                alert('Có lỗi xảy ra khi thêm sản phẩm!');
+            }
+        });
+    });
+});
+
+</script>
 
 </body>

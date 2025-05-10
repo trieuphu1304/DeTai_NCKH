@@ -1,4 +1,3 @@
-
 <nav
 class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
 id="layout-navbar"
@@ -24,25 +23,16 @@ id="layout-navbar"
   </div>
   <!-- /Search -->
 
-  <ul class="navbar-nav flex-row align-items-center ms-auto">
-    <!-- Place this tag where you want the button to render. -->
-    <li class="nav-item lh-1 me-3">
-      <a
-        class="github-button"
-        href="https://github.com/themeselection/sneat-html-admin-template-free"
-        data-icon="octicon-star"
-        data-size="large"
-        data-show-count="true"
-        aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-        >Star</a
-      >
-    </li>
+    <ul class="navbar-nav flex-row align-items-center ms-auto">
 
     <!-- User -->
     <li class="nav-item navbar-dropdown dropdown-user dropdown">
       <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-          <img src="public/backend/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+          <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('public/backend/assets/img/avatars/1.png') }}" 
+          alt="Avatar" 
+          class="w-px-40 h-auto rounded-circle"
+          onerror="this.src='{{ asset('public/backend/assets/img/avatars/1.png') }}';" />
         </div>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -55,8 +45,7 @@ id="layout-navbar"
                 </div>
               </div>
               <div class="flex-grow-1">
-                <span class="fw-semibold d-block">Trieu Phu</span>
-                <small class="text-muted">Admin</small>
+                <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
               </div>
             </div>
           </a>
@@ -65,26 +54,25 @@ id="layout-navbar"
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="{{ route('profile.index') }}">
             <i class="bx bx-user me-2"></i>
-            <span class="align-middle">My Profile</span>
+            <span class="align-middle">Thông tin tài khoản</span>
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="{{ route('settings.index') }}">
             <i class="bx bx-cog me-2"></i>
-            <span class="align-middle">Settings</span>
+            <span class="align-middle">Cài đặt</span>
           </a>
         </li>
+
         <li>
-          <a class="dropdown-item" href="#">
-            <span class="d-flex align-items-center align-middle">
-              <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-              <span class="flex-grow-1 align-middle">Billing</span>
-              <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-            </span>
+          <a class="dropdown-item" href="{{ route('auth.logout') }}">
+            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+            <span data-i18n="Authentications">Đăng xuất</span>
           </a>
         </li>
+        
         <li>
           <div class="dropdown-divider"></div>
         </li>

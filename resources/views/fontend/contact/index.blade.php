@@ -2,7 +2,10 @@
       <!-- ================ end banner area ================= -->
   
       <!-- ================ contact section start ================= -->
+      
+
     <section class="section-margin--small">
+      
       <div class="container">
         <div class="d-none d-sm-block mb-5 pb-4">
             <iframe 
@@ -15,7 +18,6 @@
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
-  
   
         <div class="row">
           <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
@@ -42,28 +44,28 @@
             </div>
           </div>
           <div class="col-md-8 col-lg-9">
-            <form action="#/" class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
+            <form action="{{ route('contact.send') }}" method="post" class="form-contact contact_form" id="contactForm" novalidate="novalidate">              @csrf
               <div class="row">
-                <div class="col-lg-5">
-                  <div class="form-group">
-                    <input class="form-control" name="name" id="name" type="text" placeholder="Tên">
+                    <div class="col-lg-5">
+                      <div class="form-group">
+                        <input class="form-control" name="name" id="name" type="text" placeholder="Tên">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" name="subject" id="subject" type="text" placeholder="Tiêu đề">
+                      </div>
+                    </div>
+                    <div class="col-lg-7">
+                      <div class="form-group">
+                          <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="5" placeholder="Nội dung"></textarea>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                  <div class="form-group text-center text-md-right mt-3">
+                    <button type="submit" class="button button--active button-contactForm">Gửi</button>
                   </div>
-                  <div class="form-group">
-                    <input class="form-control" name="subject" id="subject" type="text" placeholder="Tiêu đề">
-                  </div>
-                </div>
-                <div class="col-lg-7">
-                  <div class="form-group">
-                      <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="5" placeholder="Nội dung"></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group text-center text-md-right mt-3">
-                <button type="submit" class="button button--active button-contactForm">Gửi</button>
-              </div>
             </form>
           </div>
         </div>
@@ -71,3 +73,10 @@
     </section>
       
   </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            alert('Cảm ơn đã liên hệ với chúng tôi!');
+        });
+    });
+</script>

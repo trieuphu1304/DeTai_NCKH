@@ -84,7 +84,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'price_sale' => 'nullable',
             'productcategory_id' => 'required|exists:productcategory,id',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image',
             'quantity' => 'required',
         ]);
         $products = Products::find($id);

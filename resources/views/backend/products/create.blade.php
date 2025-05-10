@@ -34,7 +34,7 @@
                                         id="products-name" 
                                         name="name" 
                                         class="form-control" 
-                                        placeholder="Nhập tên products" 
+                                        placeholder="Nhập tên sản phẩm" 
                                         value="{{ old('name') }}" 
                                         required
                                     >
@@ -49,7 +49,7 @@
                                         id="products-description" 
                                         name="description" 
                                         class="form-control" 
-                                        placeholder="Nhập mô tả products"
+                                        placeholder="Nhập mô tả sản phẩm"
                                         rows="3"
                                     >{{ old('description') }}</textarea>
                                 </div>
@@ -73,13 +73,7 @@
                                   </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="input-group input-group-merge">
-                                    <span class="input-group-text">$</span>
-                                    <input name="price_sale" type="text" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)">
-                                    <span class="input-group-text">.00</span>
-                                  </div>
-                            </div>
+                            
 
                             <div class="mb-3">
                                 <label class="form-label" for="products-image">Ảnh</label>

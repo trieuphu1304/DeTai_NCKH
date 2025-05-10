@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="{{ asset('public/fontend/css/style.css')}}">
 
   <link rel="stylesheet" href="{{ asset('public/fontend/css/main.css')}}">
+  <link rel="stylesheet" href="{{ asset('public/fontend/css/chat_logo.css')}}">
+
 
 
   <meta name="csrf-token" content="{{ csrf_token() }}">

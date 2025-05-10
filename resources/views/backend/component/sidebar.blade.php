@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="index.html" class="app-brand-link">
+      <a class="app-brand-link">
         <span class="app-brand-logo demo">
           <svg
             width="25"
@@ -56,7 +56,7 @@
             </g>
           </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">ADMIN</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: none; ">Quản lí</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -71,8 +71,8 @@
 
       <li class="menu-item">
         <a href="{{ route('users.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <div data-i18n="Account Settings">Tài khoản</div>
+        <i class="bx bx-user" style= "margin-right: 12px;"></i>         
+        <div data-i18n="Account Settings">Tài khoản</div>
         </a>
       </li>
       <li class="menu-item">
@@ -112,10 +112,11 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="{{route('auth.logout')}}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-          <div data-i18n="Authentications">Đăng xuất</div>
+        <a href="{{ route('admin.chat.index') }}" class="menu-link">
+          <i class="fa-regular fa-comments" style="margin-right: 12px;"></i>
+          <div data-i18n="Authentications">Chat với khách hàng</div>
         </a>
       </li>
+      
 
   </aside>

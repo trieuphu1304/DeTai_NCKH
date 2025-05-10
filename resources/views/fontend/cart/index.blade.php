@@ -12,7 +12,9 @@
                                 <th scope="col">Giá</th>
                                 <th scope="col">Số lượng</th>
                                 <th scope="col">Tổng</th>
-                                <th scope="col"></th>
+                                <th scope="col">
+                                    <button id="clear-cart" class="btn btn-danger btn-sm">Xóa tất cả</button>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,7 +24,7 @@
                                         <td>
                                             <div class="media">
                                                 <div class="d-flex">
-                                                    <img src="{{ asset('upload/products/' . $product->image) }}" alt="">
+                                                    <img style="width:235px; height:235px; object-fit:cover;" src="{{ asset('upload/products/' . $product->image) }}" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <p>{{ $product->name }}</p>
@@ -120,6 +122,36 @@
         // Cập nhật lại số lượng trong ô input
         quantityInput.value = currentQuantity;
     }
+
+    // Hàm xóa tất cả sản phẩm trong giỏ hàng
+    document.getElementById('clear-cart').addEventListener('click', function() {
+    if(confirm('Bạn có chắc muốn xóa toàn bộ giỏ hàng không?')) {
+        // Gửi request xoá giỏ hàng
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Lấy token CSRF
+        fetch("{{ route('cart.clear') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Xóa tất cả sản phẩm trong giỏ hàng
+                var cartItems = document.querySelectorAll('tbody tr');
+                cartItems.forEach(item => item.remove());
+
+                // Cập nhật lại tổng tiền giỏ hàng
+                updateCartIcon(0, 0);
+            } else {
+                alert('Có lỗi xảy ra!');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    });
+
 
 
     // Hàm cập nhật lại giá của sản phẩm trong giỏ hàng

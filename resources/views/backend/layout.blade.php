@@ -28,7 +28,7 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-            @include($template)
+            @include($template, ['tokens' => $tokens ?? [], 'token' => $token ?? null, 'conversations' => $conversations ?? []])
             <!-- / Content -->
 
             <!-- Footer -->

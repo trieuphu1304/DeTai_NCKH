@@ -25,6 +25,10 @@ class CartController extends Controller
         $productIds = array_keys($cart);  // Lấy các id của sản phẩm trong giỏ hàng
         $products = Products::whereIn('id', $productIds)->get();  // Lấy các sản phẩm từ CSDL
 
+        $totalQuantity = 0;
+        foreach ($cart as $item) {
+            $totalQuantity += $item['quantity'];
+        }
         // Tính toán tổng số lượng và tổng giá trị
         $total = 0;
         foreach ($cart as $productId => $item) {
@@ -34,7 +38,8 @@ class CartController extends Controller
             'template',
             'products',
             'cart',
-            'total'
+            'total',
+            'totalQuantity'
         ));
     }
 
@@ -137,5 +142,15 @@ class CartController extends Controller
     // Quay lại trang giỏ hàng
     return redirect()->route('cart.index');
     }
+    public function clear(Request $request)
+    {
+        // Xóa toàn bộ giỏ hàng 
+        session()->forget('cart');
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
 
 }

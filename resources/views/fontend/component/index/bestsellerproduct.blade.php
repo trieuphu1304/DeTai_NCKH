@@ -13,7 +13,7 @@
                         <img class="img-fluid" src="{{ asset('upload/products/' . $products->image) }}" alt="{{ $products->name }}">
                         <ul class="card-product__imgOverlay">
                             <li><button><i class="ti-search"></i></button></li>
-                            <li><button class="add-to-cart" data-product-id="{{ $products->id }}"><i class="ti-shopping-cart"></i></button></li>
+                            <li><button class="add-to-cart_1" data-product-id="{{ $products->id }}"><i class="ti-shopping-cart"></i></button></li>
                             <li><button><i class="ti-heart"></i></button></li>
                         </ul>
                     </div>
@@ -30,7 +30,7 @@
   </section>
   <script>
     // Lắng nghe sự kiện khi nhấn vào nút "Add to Cart"
-    document.querySelectorAll('.add-to-cart').forEach(function(button) {
+    document.querySelectorAll('.add-to-cart_1').forEach(function(button) {
       button.addEventListener('click', function() {
         var productId = this.getAttribute('data-product-id');
         var quantity = 1;  // Mặc định là 1 sản phẩm khi nhấn thêm vào giỏ hàng
@@ -50,7 +50,7 @@
         .then(response => response.json())
         .then(data => {
           // Cập nhật giỏ hàng và hiển thị thông báo thành công
-          alert(data.message); // Bạn có thể thay thế bằng cách khác để thông báo
+          alert('Đã thêm sản phẩm vào giỏ!'); // Bạn có thể thay thế bằng cách khác để thông báo
           document.querySelector('.nav-shop__circle').textContent = data.cartCount; // Cập nhật số lượng giỏ hàng
         })
         .catch(error => {

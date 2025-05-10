@@ -1,0 +1,172 @@
+/* Khung chat chính */
+.chatbox {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px; /* Giảm chiều rộng từ 350px xuống 300px */
+    height: 45vh; /* Giảm chiều cao từ 50vh xuống 45vh */
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.chatbox-open {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.chatbox__header {
+    padding: 8px 12px; /* Giảm padding để tiết kiệm không gian */
+    background: #4f46e5;
+    color: #fff;
+    font-size: 14px; /* Giảm kích thước font */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Danh sách tin nhắn */
+.chatbox__messages {
+    padding: 8px; /* Giảm padding để tiết kiệm không gian */
+    overflow-y: auto;
+    max-height: calc(45vh - 100px); /* Điều chỉnh chiều cao tối đa dựa trên chiều cao khung chat */
+    background: #f9fafb;
+    flex: 1;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+/* Tin nhắn */
+.chatbox__message {
+    margin-bottom: 8px; /* Giảm khoảng cách giữa các tin nhắn */
+    padding: 8px; /* Giảm padding trong tin nhắn */
+    border-radius: 6px; /* Giảm độ bo góc */
+    font-size: 13px; /* Giảm kích thước font */
+    line-height: 1.4;
+}
+
+.chatbox__message--admin {
+    background: #e0e7ff;
+    align-self: flex-end;
+}
+
+.chatbox__message--user {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    align-self: flex-start;
+}
+
+/* Input chat */
+.chatbox__input {
+    display: flex;
+    padding: 8px; /* Giảm padding để tiết kiệm không gian */
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.chatbox__input-field {
+    flex: 1;
+    padding: 8px; /* Giảm padding trong ô nhập tin nhắn */
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    font-size: 13px; /* Giảm kích thước font */
+}
+
+.chatbox__send-btn {
+    margin-left: 8px; /* Giảm khoảng cách giữa nút gửi và ô nhập */
+    padding: 8px 12px; /* Giảm padding trong nút gửi */
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.chatbox__send-btn:hover {
+    background: #3730a3;
+}
+
+/* Người dùng */
+.user-item {
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.3s;
+}
+
+.user-item:hover {
+    background: #f3f4f6;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #4f46e5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.unread-count {
+    font-size: 12px;
+    color: #9ca3af;
+}
+/* Hiển thị tên người gửi */
+.chatbox__message .sender-name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #4b5563;
+}
+
+/* Tin nhắn user */
+.message.user {
+    align-self: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    padding: 6px 10px; /* Giảm padding trong tin nhắn */
+    margin-bottom: 8px; /* Giảm khoảng cách giữa các tin nhắn */
+    border-radius: 8px 8px 8px 0; /* Giảm độ bo góc */
+    max-width: 75%; /* Giảm chiều rộng tối đa của tin nhắn */
+}
+
+/* Tin nhắn admin */
+.message.admin {
+    align-self: flex-end; /* Đảm bảo tin nhắn nằm bên phải */
+    background-color: #dbeafe;
+    color: #1e3a8a;
+    padding: 6px 10px; /* Giảm padding trong tin nhắn */
+    margin-bottom: 8px; /* Giảm khoảng cách giữa các tin nhắn */
+    border-radius: 8px 8px 0 8px; /* Giảm độ bo góc */
+    max-width: 75%; /* Giới hạn chiều rộng tối đa của tin nhắn */
+    text-align: right;
+    margin-left: auto; /* Đẩy tin nhắn sát mép phải */
+}

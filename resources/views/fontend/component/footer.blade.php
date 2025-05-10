@@ -48,8 +48,9 @@
                                 <span class="fa fa-location-arrow"></span>
                                 Thành phố Hồ Chí Minh
                             </p>
-                            <p>43/46/68 Vườn lài</p>
 
+                            <p>43/46/68 Vườn lài</p>
+                        
                             <p class="sm-head">
                                 <span class="fa fa-phone"></span>
                                 0869764432
@@ -57,7 +58,7 @@
                             
 
                             <p class="sm-head">
-                                <span class="fa fa-envelope"></span>
+                                <span class="fa fa-envelope" style="margin-top: 15px;"></span>
                                 trieuphu130404@gmail.com
                             </p>
                             

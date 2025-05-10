@@ -23,7 +23,9 @@ class User extends Authenticatable
         'email',
         'password',
         'roles_id',
+        'avatar',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
