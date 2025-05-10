@@ -22,17 +22,17 @@
                         <div class="order_box">
                             <h2>Đơn hàng của bạn</h2>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name ?? '' }}" required>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Tên" value="{{ Auth::user()->name ?? '' }}" required>
                                 
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" required>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" required>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" required>
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ Auth::user()->email ?? '' }}">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ Auth::user()->email ?? '' }}">
                             </div>
                             <ul class="list">
                                 @foreach($cart as $item)

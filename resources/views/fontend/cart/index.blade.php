@@ -53,13 +53,14 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <form method="POST" action="{{ route('cart.delete', $product->id) }}" style="display:inline;">
+                                            <form method="POST" action="{{ route('cart.delete', $product->id) }}" class="delete-form" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa san pham này?')">
+                                                <button type="button" class="btn btn-danger delete-btn">
                                                     <i class="bx bx-trash me-1">Xóa</i>
                                                 </button>
                                             </form>
+
                                         </td>
                                     </tr>
                                 @endif
@@ -122,35 +123,72 @@
         // Cập nhật lại số lượng trong ô input
         quantityInput.value = currentQuantity;
     }
+    // Xử lý sự kiện khi nhấn nút xóa sản phẩm
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.delete-btn').forEach(function(button) {
+            button.addEventListener('click', function (e) {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Bạn có chắc chắn?',
+                    text: "Hành động này sẽ xóa sản phẩm khỏi giỏ hàng!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Vâng, xóa đi!',
+                    cancelButtonText: 'Hủy'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
 
     // Hàm xóa tất cả sản phẩm trong giỏ hàng
     document.getElementById('clear-cart').addEventListener('click', function() {
-    if(confirm('Bạn có chắc muốn xóa toàn bộ giỏ hàng không?')) {
-        // Gửi request xoá giỏ hàng
-        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Lấy token CSRF
-        fetch("{{ route('cart.clear') }}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Xóa tất cả sản phẩm trong giỏ hàng
-                var cartItems = document.querySelectorAll('tbody tr');
-                cartItems.forEach(item => item.remove());
+        Swal.fire({
+            title: 'Bạn có chắc muốn xóa toàn bộ giỏ hàng không?',
+            text: "Hành động này không thể hoàn tác!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Có, xóa giỏ hàng!',
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Gửi request xoá giỏ hàng
+                var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Lấy token CSRF
+                fetch("{{ route('cart.clear') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Xóa tất cả sản phẩm trong giỏ hàng
+                        var cartItems = document.querySelectorAll('tbody tr');
+                        cartItems.forEach(item => item.remove());
 
-                // Cập nhật lại tổng tiền giỏ hàng
-                updateCartIcon(0, 0);
-            } else {
-                alert('Có lỗi xảy ra!');
+                        // Cập nhật lại tổng tiền giỏ hàng
+                        updateCartIcon(0, 0);
+
+                        Swal.fire('Đã xóa!', 'Giỏ hàng của bạn đã được xóa.', 'success');
+                    } else {
+                        Swal.fire('Lỗi!', 'Có lỗi xảy ra khi xóa giỏ hàng.', 'error');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
             }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+        });
     });
+
 
 
 
@@ -237,13 +275,37 @@
             if (data.success) {
                 // Cập nhật lại biểu tượng giỏ hàng với số lượng và tổng tiền mới
                 updateCartIcon(data.cartCount, data.total);
-                alert('Giỏ hàng đã được cập nhật!');
+                
+                // Thông báo cập nhật thành công với SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Giỏ hàng đã được cập nhật!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             } else {
-                alert('Có lỗi xảy ra!');
+                // Thông báo lỗi nếu có vấn đề
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Có lỗi xảy ra!',
+                    text: 'Không thể cập nhật giỏ hàng. Vui lòng thử lại.',
+                    confirmButtonText: 'OK'
+                });
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            
+            // Thông báo lỗi khi có sự cố kết nối
+            Swal.fire({
+                icon: 'error',
+                title: 'Lỗi kết nối!',
+                text: 'Không thể liên hệ với máy chủ. Vui lòng thử lại sau.',
+                confirmButtonText: 'OK'
+            });
+        });
     }
+
 
 </script>
 

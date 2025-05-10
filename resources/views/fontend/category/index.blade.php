@@ -117,11 +117,23 @@
       })
       .then(response => response.json())
       .then(data => {
-        // Cập nhật giỏ hàng và hiển thị thông báo thành công
-        alert(data.message); 
-        document.querySelector('.nav-shop__circle').textContent = data.cartCount; // Cập nhật số lượng giỏ hàng
+        // Cập nhật giỏ hàng
+        document.querySelector('.nav-shop__circle').textContent = data.cartCount;
+
+        // Hiển thị thông báo bằng SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: 'Đã thêm vào giỏ hàng',
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi!',
+          text: 'Không thể thêm sản phẩm vào giỏ hàng.',
+        });
         console.error('Error:', error);
       });
     });

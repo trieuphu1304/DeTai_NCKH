@@ -76,7 +76,19 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            alert('Cảm ơn đã liên hệ với chúng tôi!');
+            e.preventDefault(); // Ngăn form submit mặc định
+
+            // Xử lý gửi form ở đây (có thể dùng AJAX)
+            Swal.fire({
+                icon: 'success',
+                title: 'Cảm ơn bạn đã liên hệ!',
+                text: 'Chúng tôi sẽ phản hồi bạn sớm nhất!',
+                timer: 3000, // Thời gian hiển thị thông báo (3 giây)
+                showConfirmButton: false // Ẩn nút "OK"
+            });
+
+            // Reset form sau khi gửi
+            document.getElementById('contactForm').reset();
         });
     });
 </script>

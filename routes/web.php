@@ -22,6 +22,7 @@ use App\Http\Controllers\Fontend\CartController;
 use App\Http\Controllers\Fontend\CheckoutController;
 use App\Http\Controllers\Fontend\ProductDetailController;
 use App\Http\Controllers\Fontend\RegisterController;
+use App\Http\Controllers\Fontend\SubscribeController;
 use App\Http\Middleware\AuthenticateMiddleware;
 
 
@@ -98,6 +99,9 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index')->middleware(AuthenticateMiddleware::class);
 Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update')->middleware(AuthenticateMiddleware::class);
 Route::post('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password.update')->middleware(AuthenticateMiddleware::class);
+
+
+
 /* Route Fontend */
 
 /* Trang chủ */ 
@@ -135,4 +139,7 @@ Route::get('confirm',[CheckoutController::class, 'confirm'])->name('checkout.con
 Route::get('/chat', [ChatController::class, 'index']);
 Route::get('/chat/load', [ChatController::class, 'load']);
 Route::post('/chat/send', [ChatController::class, 'send']);
+/* Đăng kí thành viên */
+Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
+
 

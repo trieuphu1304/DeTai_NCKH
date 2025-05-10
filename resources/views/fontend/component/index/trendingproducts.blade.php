@@ -22,37 +22,50 @@
             </div>
         @endforeach
     </div>
-    
 </div>
+
 <script>
     // Lắng nghe sự kiện khi nhấn vào nút "Add to Cart"
     document.querySelectorAll('.add-to-cart').forEach(function(button) {
-      button.addEventListener('click', function() {
-        var productId = this.getAttribute('data-product-id');
-        var quantity = 1;  // Mặc định là 1 sản phẩm khi nhấn thêm vào giỏ hàng
-  
-        // Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ hàng
-        fetch('{{ route("cart.add") }}', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-          },
-          body: JSON.stringify({
-            'products_id': productId,
-            'quantity': quantity
-          })
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Cập nhật giỏ hàng và hiển thị thông báo thành công
-          alert('Đã thêm sản phẩm vào giỏ!');
-          document.querySelector('.nav-shop__circle').textContent = data.cartCount; // Cập nhật số lượng giỏ hàng
-        })
-        .catch(error => {
-          console.error('Error:', error);
+        button.addEventListener('click', function() {
+            var productId = this.getAttribute('data-product-id');
+            var quantity = 1;  // Mặc định là 1 sản phẩm khi nhấn thêm vào giỏ hàng
+
+            // Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ hàng
+            fetch('{{ route("cart.add") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    'products_id': productId,
+                    'quantity': quantity
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hiển thị thông báo thành công với SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Đã thêm sản phẩm vào giỏ!',
+                    timer: 2000, // Thông báo tự động đóng sau 2 giây
+                    showConfirmButton: false // Không hiển thị nút "OK"
+                });
+
+                // Cập nhật số lượng giỏ hàng
+                document.querySelector('.nav-shop__circle').textContent = data.cartCount; // Cập nhật số lượng giỏ hàng
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+                // Hiển thị thông báo lỗi với SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Có lỗi xảy ra!',
+                    text: 'Vui lòng thử lại sau.'
+                });
+            });
         });
-      });
     });
-  </script>
-  
+</script>

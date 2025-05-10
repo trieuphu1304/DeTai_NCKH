@@ -66,11 +66,7 @@ $(function() {
     dots:false
   });
 
-  //------- mailchimp --------//  
-	function mailChimp() {
-		$('#mc_embed_signup').find('form').ajaxChimp();
-	}
-  mailChimp();
+
   
   //------- fixed navbar --------//  
   $(window).scroll(function(){
