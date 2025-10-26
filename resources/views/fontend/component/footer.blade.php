@@ -21,7 +21,7 @@
                             <li><a href="#">Danh mục sản phẩm</a></li>
                             <li><a href="#">Tin tức</a></li>
                             <li><a href="#">Liên hệ</a></li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -29,13 +29,13 @@
                     <div class="single-footer-widget instafeed">
                         <h4 class="footer_title">Trưng bày</h4>
                         <ul class="list instafeed d-flex flex-wrap">
-                            <li><img src="{{ asset('public/fontend/img/gallery/r1.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r1.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r2.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r3.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r5.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r7.jpg') }}" alt=""></li>
-                            <li><img src="{{ asset('public/fontend/img/gallery/r8.jpg') }}" alt=""></li>                            
+                            <li><img src="{{ asset('/fontend/img/gallery/r1.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r1.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r2.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r3.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r5.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r7.jpg') }}" alt=""></li>
+                            <li><img src="{{ asset('/fontend/img/gallery/r8.jpg') }}" alt=""></li>
 
                         </ul>
                     </div>
@@ -50,18 +50,18 @@
                             </p>
 
                             <p>43/46/68 Vườn lài</p>
-                        
+
                             <p class="sm-head">
                                 <span class="fa fa-phone"></span>
                                 0869764432
                             </p>
-                            
+
 
                             <p class="sm-head">
                                 <span class="fa fa-envelope" style="margin-top: 15px;"></span>
                                 trieuphu130404@gmail.com
                             </p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -72,8 +72,8 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row d-flex">
-                
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>
     </div>

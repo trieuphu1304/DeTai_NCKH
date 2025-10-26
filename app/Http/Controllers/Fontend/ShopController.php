@@ -18,7 +18,7 @@ class ShopController extends Controller
         $template = 'fontend.index';
         $blog = Blog::all();
         $trendingProducts = Products::orderBy('created_at', 'desc')->take(4)->get();
-        $bestSellerProducts = Products::orderBy('created_at', 'desc')->get();
+        $bestSellerProducts = Products::orderBy('created_at', 'desc')->take(8)->get();
         return view('fontend.layout', compact(
             'template',
             'blog',

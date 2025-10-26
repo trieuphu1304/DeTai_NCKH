@@ -133,6 +133,7 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 /* Thanh toán */ 
 Route::get('checkout',[CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('checkout', [CheckoutController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::post('/checkout/momo', [CheckoutController::class, 'momo_payment'])->name('checkout.momo_payment');
 Route::get('confirm',[CheckoutController::class, 'confirm'])->name('checkout.confirm'); 
 /*ChatBox*/
 
@@ -141,5 +142,3 @@ Route::get('/chat/load', [ChatController::class, 'load']);
 Route::post('/chat/send', [ChatController::class, 'send']);
 /* Đăng kí thành viên */
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
-
-
